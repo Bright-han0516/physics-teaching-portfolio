@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CIE 物理知识点与易错点库</title><meta name="description" content="CIE 9702 物理知识点、常见考法、考官报告易错点与知识点前后关系，可交互查看样例。"><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="sub.css"><link rel="icon" href="favicon.svg" type="image/svg+xml"></head>
+<body>
+<header><a class="brand" href="index.html">兰晗 <span>PHYSICS EDUCATION</span></a><nav><a class="back" href="index.html">← 返回作品集</a></nav></header>
+<main>
+<section class="page-intro">
+  <p class="eyebrow">KNOWLEDGE MAP / CIE 9702 PHYSICS</p>
+  <h1>CIE 物理知识点与易错点库</h1>
+  <p class="lead">把每组知识点、常见考法、考官报告里的典型错误，以及知识点之间“先学什么、后学什么”整理到一起。备课时可以直接查，也能用来判断学生卡在哪一环。</p>
+  <div class="stats">
+    <div class="stat"><b>96 组</b><span>知识点，覆盖 AS 与 A2 全部考纲</span></div>
+    <div class="stat"><b>245 条</b><span>知识点之间的前后关系</span></div>
+    <div class="stat"><b>345 条</b><span>易错点，每条注明考官报告出处和考季</span></div>
+  </div>
+</section>
+
+<section class="block">
+  <h2>样例：点一个知识点看看</h2>
+  <p class="muted small">这里开放 Topic 2 运动学、Topic 9 电学、Topic 10 直流电路三个主题。完整库可在面试中演示。</p>
+  <div class="kg">
+    <nav class="kg-list" id="list" aria-label="知识点列表"></nav>
+    <div class="kg-detail" id="detail" aria-live="polite"><p class="muted">加载中……</p></div>
+  </div>
+</section>
+
+<section class="block">
+  <h2>关系分三种</h2>
+  <div class="cards">
+    <div><h3>必须先学</h3><p>不会前一个，后一个基本学不下去。例如不会串并联电阻，就没法学电源内阻。</p></div>
+    <div><h3>建议先学</h3><p>先学会更顺，但不是硬性前提。排课可以调整顺序。</p></div>
+    <div><h3>可以类比</h3><p>两个知识点思路相通，讲后一个时可以拿前一个打比方。</p></div>
+  </div>
+  <p class="muted small" style="margin-top:14px">区分这三种关系，是为了不把“建议”当成“必须”：如果全部当硬性前提，学生会被锁在一长串前置内容里，学习路径反而走不通。</p>
+</section>
+
+<section class="block">
+  <h2>数据从哪里来</h2>
+  <ul class="plain">
+    <li>易错点来自 CIE 考官报告（2023 年 6 月至 2025 年 6 月，Paper 1–5），每条都标明出自哪份报告、哪个考季。</li>
+    <li>考法和出题统计来自自建的 2032 道真题转录题库。</li>
+    <li>每条前后关系都写明了理由，并区分是“必须先学”“建议先学”还是“可以类比”。</li>
+  </ul>
+</section>
+</main>
+<footer><span>兰晗 · 国际物理教研作品</span><p>易错点为根据考官报告整理的中文要点，不是报告原文。</p></footer>
+<script>
+(function(){
+  var TYPE={hard:'必须先学',soft:'建议先学',analogy:'可以类比'};
+  var list=document.getElementById('list'), detail=document.getElementById('detail');
+  function el(tag,attrs,text){var e=document.createElement(tag);if(attrs)for(var k in attrs)e.setAttribute(k,attrs[k]);if(text!=null)e.textContent=text;return e;}
+  fetch('data/kg-sample.json').then(function(r){return r.json();}).then(function(d){
+    var G=d.groups, ids=Object.keys(G).filter(function(k){return G[k].in;});
+    ids.sort(function(a,b){var x=a.split('-').map(Number),y=b.split('-').map(Number);return x[0]-y[0]||x[1]-y[1];});
+    var lastTopic=null, buttons={};
+    ids.forEach(function(id){
+      var g=G[id];
+      if(g.topic!==lastTopic){list.appendChild(el('h4',null,'Topic '+g.topic));lastTopic=g.topic;}
+      var b=el('button',{type:'button','aria-pressed':'false','data-id':id},id+'  '+g.kp);
+      b.addEventListener('click',function(){show(id);});
+      buttons[id]=b; list.appendChild(b);
+    });
+    function chip(id,type,inside){
+      var g=G[id]||{kp:id};
+      var c=el(inside?'button':'span',{class:'chip'+(inside?'':' out'),type:inside?'button':null});
+      if(!inside)c.removeAttribute('type');
+      c.textContent=id+' '+g.kp;
+      c.appendChild(el('span',{class:'t'},TYPE[type]||type));
+      if(inside)c.addEventListener('click',function(){show(id);});
+      return c;
+    }
+    function show(id){
+      var g=G[id];
+      Object.keys(buttons).forEach(function(k){buttons[k].setAttribute('aria-pressed',k===id?'true':'false');});
+      detail.innerHTML='';
+      detail.appendChild(el('p',{class:'eyebrow'},'TOPIC '+g.topic+' · '+(g.stage||'')));
+      detail.appendChild(el('h3',null,g.kp));
+      var topicNo=g.topic.split(' ')[0];
+      if(d.profiles[topicNo])detail.appendChild(el('p',{class:'src'},d.profiles[topicNo]));
+      if(g.points&&g.points.length){detail.appendChild(el('h4',null,'包含的知识点'));var ul=el('ul');g.points.forEach(function(p){ul.appendChild(el('li',null,p));});detail.appendChild(ul);}
+      if(g.patterns&&g.patterns.length){detail.appendChild(el('h4',null,'常见考法'));var ul2=el('ul');g.patterns.forEach(function(p){ul2.appendChild(el('li',null,p));});detail.appendChild(ul2);}
+      var pre=d.edges.filter(function(e){return e.to===id;}), post=d.edges.filter(function(e){return e.from===id;});
+      if(pre.length){detail.appendChild(el('h4',null,'学它之前（'+pre.length+'）'));var c1=el('div',{class:'chips'});pre.forEach(function(e){c1.appendChild(chip(e.from,e.type,G[e.from]&&G[e.from].in));});detail.appendChild(c1);}
+      if(post.length){detail.appendChild(el('h4',null,'学完可以接（'+post.length+'）'));var c2=el('div',{class:'chips'});post.forEach(function(e){c2.appendChild(chip(e.to,e.type,G[e.to]&&G[e.to].in));});detail.appendChild(c2);}
+      var ms=d.misconceptions.filter(function(m){return m.group===id;});
+      detail.appendChild(el('h4',null,'考官报告里的易错点（'+ms.length+'）'));
+      if(ms.length){var ul3=el('ul');ms.forEach(function(m){var li=el('li',null,m.text+' ');li.appendChild(el('span',{class:'src'},'— '+m.source+(m.seasons?' · '+m.seasons:'')));ul3.appendChild(li);});detail.appendChild(ul3);}
+      else detail.appendChild(el('p',{class:'src'},'这组知识点在近几季考官报告里没有单独的失分记录。'));
+    }
+    show(ids.indexOf('10-2')>=0?'10-2':ids[0]);
+  }).catch(function(){detail.innerHTML='<p class="muted">样例数据加载失败，请刷新页面重试。</p>';});
+})();
+</script>
+</body></html>

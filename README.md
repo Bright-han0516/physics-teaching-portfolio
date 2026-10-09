@@ -1,10 +1,14 @@
 # 兰晗 · 国际物理教研作品
 
-交互式模拟实验与 Edexcel 互动课件的演示作品页。
+国际物理教研作品集：AI 批改与辅导原型、标准课程产品样板、CIE 知识点与易错点库、中英双语讲义、交互式模拟实验、讲义与习题册。
 
 ## 内容
 
-- `index.html`、`style.css`：展示页面，可继续增加教研产品。
+- `index.html`、`style.css`、`sub.css`：首页与样式。
+- `whitespace.html`：留白 AI 批改与辅导原型详情页。
+- `standard-course.html`：标准课程产品样板详情页。
+- `knowledge-map.html` + `data/kg-sample.json`：CIE 知识点与易错点库交互样例（仅开放 Topic 2、9、10）。
+- `assets/`：详情页截图与首页卡片缩略图。
 - `simulations.mp4`：交互式模拟实验产品总览，约 88 秒。
 - `courseware.mp4`：Edexcel 互动课件演示，约 63 秒。
 - `simulations.jpg`、`courseware.jpg`：由视频抽取的封面。

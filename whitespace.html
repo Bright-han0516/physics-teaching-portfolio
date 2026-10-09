@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>留白 · AI 批改与辅导原型</title><meta name="description" content="留白：先让学生独立做题，再按官方评分标准逐个得分点批改、分级提示的 AI 学习原型，以及 7 个大模型的批改测试。"><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="sub.css"><link rel="icon" href="favicon.svg" type="image/svg+xml"></head>
+<body>
+<header><a class="brand" href="index.html">兰晗 <span>PHYSICS EDUCATION</span></a><nav><a class="back" href="index.html">← 返回作品集</a></nav></header>
+<main>
+<section class="page-intro">
+  <p class="eyebrow">AI LEARNING PROTOTYPE / 个人项目 · 2026.07–08</p>
+  <h1>留白：AI 批改与辅导原型</h1>
+  <p class="lead">学生先自己做题，AI 不插手；交卷后按考试局的官方评分标准逐个得分点批改；没拿满分时只追问、给提示，不直接给答案；最后换一道新题，看学生是不是真的懂了。</p>
+  <div class="stats">
+    <div class="stat"><b>16 份</b><span>真实学生作答（已脱敏），共 34 分</span></div>
+    <div class="stat"><b>7 个</b><span>参与测试的大模型（DeepSeek、通义千问系列）</span></div>
+    <div class="stat"><b>81%–88%</b><span>总分与人工复核完全一致的比例</span></div>
+  </div>
+</section>
+
+<section class="block">
+  <h2>为什么做这个</h2>
+  <p>AI 辅导最常见的问题，是帮得太早、太多。学生一卡住就拿到答案，作业做对了，考试还是不会。Bastani 等人 2025 年发表在 PNAS 上的研究发现，不加限制地用 GPT 辅助练习的学生，期末成绩比对照组低约 17%；限制成“只给提示、不给答案”之后，这种负面影响基本消失。</p>
+  <p>教学里还有一个老问题：答对了不等于懂了。学生可能是背出来或猜对的，换一道题就错。普通的批改只看答案对不对，看不出这一点。</p>
+</section>
+
+<section class="block">
+  <h2>学生会经历的流程</h2>
+  <p class="muted small">深色的两步 AI 完全不参与：系统不会调用模型，学生提问只会收到“现在不回答”。</p>
+  <ol class="flow">
+    <li><b>前置检查</b><span>先确认基础知识，不会就退回去补</span></li>
+    <li class="lock"><b>独立做题</b><span>AI 锁定，限时作答</span></li>
+    <li><b>逐点批改</b><span>按评分标准逐个得分点判，并标出依据</span></li>
+    <li><b>分级提示</b><span>最多 4 级追问，到顶也不给答案</span></li>
+    <li class="lock"><b>换题验证</b><span>换一道真题，AI 再次锁定</span></li>
+    <li><b>结束</b><span>5 项条件都满足才算掌握，30 天后再测</span></li>
+  </ol>
+  <div class="two">
+    <figure class="shot"><img src="assets/ws-probe.jpg" alt="独立做题界面：顶部提示 AI 已锁定，学生两次提问都被拒绝回答" loading="lazy" width="1180" height="1140"><figcaption>独立做题阶段：学生问了两次，AI 都不回答，只提醒先把想法写下来。</figcaption></figure>
+    <figure class="shot"><img src="assets/ws-verdict.jpg" alt="批改结果界面：逐个得分点对照考官要求与学生原话，并标出严判与宽判的分歧" loading="lazy" width="1180" height="1539"><figcaption>批改结果：对照考官要求和学生原话，注明评分标准出处；严判、宽判有分歧时会标出来，交给老师复核。</figcaption></figure>
+  </div>
+  <p class="muted small">界面截图来自本地运行的原型，接入 DeepSeek 模型。界面上的 grasp 是项目内部代号。</p>
+</section>
+
+<section class="block">
+  <h2>三个关键设计</h2>
+  <div class="cards">
+    <div><h3>AI 什么时候闭嘴，写成规则</h3><p>每个阶段规定 AI 能做什么。独立做题和换题验证阶段什么都不能做，连模型都不调用；提示最多 4 级。这样“不给答案”是可以测试、可以检查的，不靠模型自觉。</p></div>
+    <div><h3>判断“懂没懂”，不只看对错</h3><p>作答分成“结论”和“理由”两部分，再加上学生自己估计的把握程度。答案对、理由错、还很有把握，说明学生有一个很顽固的误解，要重点处理。</p></div>
+    <div><h3>每一分都能查到依据</h3><p>把官方评分标准拆成一条条得分点，写清必须出现的词、可以接受和不能接受的说法、哪些点之间有前后依赖。模型只判断“这句话有没有表达出这个意思”，分数由规则计算。</p></div>
+  </div>
+</section>
+
+<section class="block">
+  <h2>批改测试：7 个大模型</h2>
+  <p>用 16 份真实学生作答（CIE 10 份、Edexcel 6 份，共 34 分）测试，以我按评分标准复核后的分数为准。</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>模型</th><th>总分完全一致</th><th>得分点一致</th><th>有前后依赖的题</th></tr></thead>
+    <tbody>
+      <tr><td><b>qwen3-14b</b></td><td class="num"><b>14 / 16（87.5%）</b></td><td class="num">82.4%</td><td class="num">2 / 2</td></tr>
+      <tr><td>deepseek-v4-flash</td><td class="num">13 / 16（81.3%）</td><td class="num">88.2%</td><td class="num">2 / 2</td></tr>
+      <tr><td>deepseek-v4-pro</td><td class="num">13 / 16（81.3%）</td><td class="num">85.3%</td><td class="num">2 / 2</td></tr>
+      <tr><td>qwen-plus</td><td class="num">13 / 16（81.3%）</td><td class="num">79.4%</td><td class="num">2 / 2</td></tr>
+      <tr><td>qwen3-max</td><td class="num">13 / 16（81.3%）</td><td class="num">79.4%</td><td class="num">2 / 2</td></tr>
+      <tr><td>qwen3-235b-a22b</td><td class="num">13 / 16（81.3%）</td><td class="num">79.4%</td><td class="num">2 / 2</td></tr>
+      <tr><td>qwen3-32b</td><td class="num">13 / 16（81.3%）</td><td class="num">76.5%</td><td class="num">2 / 2</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>看到的三件事</h3>
+  <ol class="plain">
+    <li><b>模型大小不是关键。</b>7 个模型成绩几乎一样，参数小得多的 qwen3-14b 并不比大模型差。</li>
+    <li><b>错的总是同几道题，而且原因都不在模型。</b>所有模型都错了同样 2 道，6 个模型还多错同 1 道。逐题查下来：
+      <div class="table-wrap"><table>
+        <thead><tr><th>题目</th><th>系统 / 复核</th><th>原因</th></tr></thead>
+        <tbody>
+          <tr><td>WPH14 Oct 2023 Q22(a)</td><td class="num">0 / 1</td><td><span class="tag">评分尺度</span>学生没写出“竖直方向”。系统按标准严判 0 分；我复核时也觉得是边界情况，沿用了原来的宽松给分。</td></tr>
+          <tr><td>WPH16 Oct 2021 Q3(a)</td><td class="num">1 / 2</td><td><span class="tag">评分尺度</span>同样是严判和宽判的差别，复核时也标为边界情况。</td></tr>
+          <tr><td>WPH15 May 2022 Q16(a)(ii)</td><td class="num">1–2 / 0</td><td><span class="tag warn">规则没做</span>卷面上同时留着错误结论和正确算式，考官看不出哪个是最终答案，给 0 分。“最终结论不明确”这条规则还没做进系统。</td></tr>
+        </tbody>
+      </table></div>
+      前两题要把“严判还是宽判”明确规定下来，第三题要补一条规则。都是评分标准该定清楚的事，换更大的模型解决不了。</li>
+    <li><b>前后依赖的题，规则比人工批改更稳。</b>有 2 道题规定“前一个得分点没拿到，后一个也不能给分”。最初的人工批改两题都多给了 1 分，复核后改成 0 分；7 个模型全部判对。</li>
+  </ol>
+</section>
+
+<section class="block">
+  <h2>还不成熟的地方</h2>
+  <ul class="plain">
+    <li>只测了 16 份作答，能看出方向，但不能代表大规模使用时的准确率。</li>
+    <li>标准分数只有我一个人复核，还没有第二位老师独立批改来对照。</li>
+    <li>系统里已收录的 11 份 CIE 评分标准，只核对过抄得对不对，还没有用学生作答测过批得准不准。</li>
+    <li>很多 CIE 真题原卷带电路图，目前用文字描述代替。</li>
+    <li>还没有学生实际使用的数据，也还不能多人同时使用。</li>
+  </ul>
+  <p class="note">下一步：把测试扩大到 100 道以上的解释题，请第二位老师独立批改；把“严判 / 宽判”做成可以选择的设置；找几位学生试用，看他们卡在哪一步、哪一级提示真正有用。</p>
+</section>
+
+<section class="block">
+  <h2>我做了什么</h2>
+  <div class="two">
+    <div><h3 class="small">我负责</h3><p class="muted">产品设计、学习流程、评分标准拆解、测试题的选取和复核、错题原因分析，以及所有功能的验收。</p></div>
+    <div><h3 class="small">AI 辅助完成</h3><p class="muted">代码用 AI 编程工具写。我写需求和接口说明，检查实现是否符合设计，用测试把关（133 个单元测试和完整流程测试）。</p></div>
+  </div>
+</section>
+</main>
+<footer><span>兰晗 · 国际物理教研作品</span><p>测试数据来自项目内的模型测试记录（2026.08）。学生作答已脱敏，页面不展示原始作答。</p></footer>
+</body></html>
