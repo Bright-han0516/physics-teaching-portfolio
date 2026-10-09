@@ -20,6 +20,7 @@
   <symbol id="i-spark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M6 18l2.5-2.5M15.5 8.5 18 6"/></symbol>
   <symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></symbol>
   <symbol id="i-cap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m2 9 10-5 10 5-10 5L2 9Z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/></symbol>
+  <symbol id="i-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0-4-4m4 4 4-4M5 20h14"/></symbol>
   <symbol id="i-brief" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></symbol>
 </svg>
 
@@ -96,29 +97,62 @@
 
     <!-- 简历 -->
     <article class="tab" id="resume" data-page="resume">
-      <h2 class="tab-title">简历</h2>
+      <div class="tab-head">
+        <h2 class="tab-title">简历</h2>
+        <a class="dl-btn" href="lanhan-resume.pdf" download="兰晗_简历.pdf"><svg><use href="#i-down"/></svg>下载 PDF 简历</a>
+      </div>
 
       <section class="timeline">
         <div class="timeline-head"><div class="icon-box"><svg><use href="#i-brief"/></svg></div><h3>工作经历</h3></div>
         <ol class="timeline-list">
           <li class="timeline-item">
-            <h4>上海新东方国际教育 · 国际物理教师 / 产品设计师</h4>
+            <h4>上海新东方国际教育 · 国际物理教师 / 集团产品设计师</h4>
             <span class="when">2025.02 — 至今</span>
-            <ul>
-              <li>教 AP、CIE、Edexcel 物理。2026 年 5 月考季，所带 AP 学生全部 4 分及以上，80% 拿到 5 分。</li>
-              <li>2025.05 起参与集团教研：题库建设中负责真题分类和拆题，交付 Edexcel 集团讲义和 CIE IGCSE 分类习题册。</li>
-              <li>给项目老师做过 2 场 AI 使用培训（约 60 人），组织过 2 次 AI 教学应用主题的教研活动。</li>
-            </ul>
+            <div class="sub-block">
+              <h5>教学</h5>
+              <ul>
+                <li>教 AP、CIE、Edexcel 物理。2026 年 5 月考季，所带 AP 学生全部 4 分及以上，80% 拿到 5 分；Edexcel 学生拿到 A 的比例超过 90%。</li>
+                <li>研发力学、波动、电学等交互式模拟实验，用于课堂演示和学生动手测数据。<a class="see" href="materials.html#simulations">看演示视频 →</a></li>
+                <li>用 AI 听课记录分析自己的 217 节课（老师讲话占比、提问后等多久等），据此调整上课方式。</li>
+              </ul>
+            </div>
+            <div class="sub-block">
+              <h5>集团教研 <span class="when-inline">2025.05 起</span></h5>
+              <ul>
+                <li>2025.05–2026.01 参与集团题库建设，负责真题分类和拆题，把题目按考点重新归类，方便老师选题和学生分类练习。</li>
+                <li>交付 Edexcel 集团讲义和 CIE IGCSE 0625 分类习题册（2025.10），逐题标注真题出处并校订答案册。<a class="see" href="materials.html#workbooks">查看习题册 →</a></li>
+                <li>牵头整理 Physics Bowl 二十年真题：逐题打标签，按主题重排成 16 章、226 页，做了教师版、学生版、答案册三套，校了两轮。<a class="see" href="materials.html#physicsbowl">查看练习册 →</a></li>
+              </ul>
+            </div>
+            <div class="sub-block">
+              <h5>AI 应用</h5>
+              <ul>
+                <li>2026.01 起自己搭了 13 个 AI 教研工具，覆盖写讲义、做课件、真题切题与录入、考官报告整理、学情反馈等环节，用它做出 AP、CIE A2、IB 共 50 多个单元的中英双语讲义。<a class="see" href="materials.html#bilingual">查看双语讲义 →</a></li>
+                <li>制定讲义检查标准，从 9 个方面查：考点有没有漏、题型全不全、考官报告引用对不对、例题数字有没有算错、中英文是否一致等；已检查 11 批讲义，问题按轻重分级修改。</li>
+                <li>给项目老师做过 2 场 AI 使用培训（约 60 人），给顾问做过培训（约 30 人）；组织过 2 次 AI 教学应用主题的教研活动。</li>
+              </ul>
+            </div>
           </li>
           <li class="timeline-item">
             <h4>上海建科检验有限公司 · 检测工程师</h4>
             <span class="when">2023.07 — 2025.02</span>
-            <p>参与《建筑装饰膜》行业标准编写，负责部分条款起草和各方意见汇总；日常做检测分析和技术报告。</p>
+            <ul>
+              <li><strong>检测与报告：</strong>对送检的工程样品做质量检测，对照标准逐条判定，出具检测报告，并和客户沟通检测方案。</li>
+              <li><strong>标准编制：</strong>作为主要成员参与团体标准《建筑装饰膜》的编制，负责标准申报书、立项会准备和条款起草，汇总专家和各方意见后修改定稿。</li>
+              <li><strong>实验室筹建：</strong>参与与 DNV 合作的船用缆绳检测实验室前期筹备，完成市场和客户需求调研，与 10 余家设备供应商做技术比选，评估 3 个候选场地，并做建设成本估算。</li>
+              <li><strong>专利：</strong>参与研发的“一种外窗现场水密性能试验装置”获实用新型专利授权（2025）。</li>
+            </ul>
+            <p class="bridge">和现在工作的关系：写标准、对照标准逐条判定，和现在拆评分标准、做讲义检查是同一种功夫。</p>
           </li>
           <li class="timeline-item">
-            <h4>同济大学土木工程学院 · 研究助理</h4>
+            <h4>同济大学土木工程学院 结构防灾减灾工程系 · 研究助理</h4>
             <span class="when">2022.08 — 2023.07</span>
-            <p>参与连梁低周反复加载试验，负责试验方案、数据分析和技术报告。</p>
+            <ul>
+              <li><strong>试验研究：</strong>参与与中建海龙合作的“新型干式套筒连接连梁低周反复加载试验”，设计试验方案和加载方式，协调试件制作、材料强度测试和实验室排期，试验比原计划提前约一个月完成。</li>
+              <li><strong>数据分析：</strong>整理和分析试验数据，用 SAP2000 做数值模拟并和实测结果对比，分析偏差原因，参与撰写技术报告。</li>
+              <li><strong>专利：</strong>作为第二发明人，<strong>1 项发明专利</strong>（一种外伸锚固式分段后张装配式自复位墙体系，2025 年授权）和 <strong>1 项实用新型专利</strong>（装配式自复位混凝土构件的分段后张预应力拼接节点，2023 年授权）已获授权。</li>
+              <li><strong>教学支持：</strong>为课题组老师和学生准备讲义、课件和实验指导材料。</li>
+            </ul>
           </li>
         </ol>
       </section>
@@ -129,17 +163,17 @@
           <li class="timeline-item">
             <h4>标准课程产品库</h4>
             <span class="when">2026.08</span>
-            <p>设计从考纲到成品课程的 8 步做法，用 Edexcel IAL Unit 1 试跑前 5 步：32 个考点、429 道真题、961 个评分点，排出 30 课时教学计划。</p>
+            <p>设计从考纲到成品课程的 8 步做法，每一步都有检查标准。用 Edexcel IAL Unit 1 试跑前 5 步：32 个考点、429 道真题、961 个评分点、265 条考官报告意见逐一对应，排出 30 课时教学计划，做出 8 份内容产品（初稿）。<a class="see" href="standard-course.html">查看详情 →</a></p>
           </li>
           <li class="timeline-item">
             <h4>留白：AI 批改与辅导原型</h4>
             <span class="when">2026.07 — 2026.08</span>
-            <p>学生先独立做题，再按官方评分标准逐点批改，只给提示不给答案；用 16 份真实学生作答测试了 7 个大模型。</p>
+            <p>学生先独立做题，再按官方评分标准逐点批改，只给提示不给答案，最后换题验证。用 16 份真实学生作答测试 7 个大模型，总分与人工复核完全一致的比例为 81%–88%。<a class="see" href="whitespace.html">查看详情 →</a></p>
           </li>
           <li class="timeline-item">
-            <h4>AI 教研工具</h4>
-            <span class="when">2026.01 起</span>
-            <p>自己搭了 13 个 AI 教研工具，做出 50 多个单元的中英双语讲义，并定了一套 9 个方面的讲义检查标准。</p>
+            <h4>CIE 物理知识点与易错点库</h4>
+            <span class="when">CIE 9702</span>
+            <p>把知识点、常见考法、考官报告里的典型错误和对应真题整理到一起：96 组知识点、245 条知识点关联、345 条易错点，每条注明出处和考季。<a class="see" href="knowledge-map.html">在线查看 →</a></p>
           </li>
         </ol>
       </section>
@@ -150,7 +184,11 @@
           <li class="timeline-item">
             <h4>同济大学 · 土木工程 · 工学学士</h4>
             <span class="when">2018.09 — 2022.07</span>
-            <p>理工科训练让我习惯用数据说话，对照标准逐条检查。</p>
+            <ul>
+              <li><strong>毕业设计：</strong>与上海天华建筑设计合作，完成带屈曲约束支撑（BRB）的预应力装配式混凝土框架结构设计，用盈建科做结构模拟，产出计算书、有限元模型和施工图。</li>
+              <li><strong>校园经历：</strong>排球社副社长，负责新手教学和训练安排，组织校内排球比赛；学生会体育部活动策划组组长。</li>
+            </ul>
+            <p class="bridge">理工科训练让我习惯用数据说话，对照标准逐条检查。</p>
           </li>
         </ol>
       </section>
@@ -214,6 +252,7 @@
         <a class="contact-card" href="mailto:lanhansmart@gmail.com"><div class="icon-box"><svg><use href="#i-mail"/></svg></div><div><h4>lanhansmart@gmail.com</h4><p>发邮件给我</p></div></a>
         <a class="contact-card" href="https://github.com/Bright-han0516" target="_blank" rel="noopener"><div class="icon-box"><svg><use href="#i-code"/></svg></div><div><h4>GitHub · Bright-han0516</h4><p>本站源码和公开项目</p></div></a>
         <div class="contact-card"><div class="icon-box"><svg><use href="#i-pin"/></svg></div><div><h4>上海</h4><p>所在城市</p></div></div>
+        <a class="contact-card" href="lanhan-resume.pdf" download="兰晗_简历.pdf"><div class="icon-box"><svg><use href="#i-down"/></svg></div><div><h4>下载 PDF 简历</h4><p>一页，公开版（不含手机号）</p></div></a>
       </div>
       <p class="credit" style="margin-top:28px">更多涉及公司内部资料和学生信息的工作（集团题库、评分一致性复核、教学话语分析等）不在网上公开，可以在面试中结合具体分工交流。</p>
     </article>
