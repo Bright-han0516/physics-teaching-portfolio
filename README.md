@@ -4,14 +4,13 @@
 
 ## 内容
 
-- `index.html`、`style.css`、`sub.css`：首页与样式。
+- `index.html` + `vcard.css`：主页，名片式布局（左栏个人信息，右栏“关于我 / 简历 / 作品 / 联系”标签页）。布局参考 [vCard](https://github.com/codewithsadee/vcard-personal-portfolio)（MIT），代码为本站自写，不加载外部字体。
 - `whitespace.html`：留白 AI 批改与辅导原型详情页。
 - `standard-course.html`：标准课程产品样板详情页。
 - `knowledge-map.html` + `data/kg-sample.json`：CIE 知识点与易错点库交互样例（仅开放 Topic 2、9、10）。
-- `assets/`：详情页截图与首页卡片缩略图。
-- `simulations.mp4`：交互式模拟实验产品总览，约 88 秒。
-- `courseware.mp4`：Edexcel 互动课件演示，约 63 秒。
-- `simulations.jpg`、`courseware.jpg`：由视频抽取的封面。
+- `materials.html`：教学资源合集（双语讲义、模拟实验与互动课件视频、讲义、习题册、Physics Bowl）。
+- `style.css`、`sub.css`、`theme-dark.css`：详情页样式，`theme-dark.css` 让详情页与主页的深色风格一致。
+- `assets/`：截图与缩略图；`simulations.mp4`、`courseware.mp4`：演示视频。
 
 GitHub Pages：选择 `main` 分支、根目录 `/` 发布。
 

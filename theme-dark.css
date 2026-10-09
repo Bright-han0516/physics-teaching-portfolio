@@ -1,0 +1,29 @@
+/* 详情页深色主题：与主页（vcard.css）统一。放在 style.css、sub.css 之后加载。 */
+:root{color-scheme:dark;--ink:#fafafa;--muted:#b4b4b4;--paper:#121212;--line:#383838;--card:#1e1e1f;--accent:#ffdb70;--lock:#ffdb70;--lock-soft:#2e2818}
+body{background:var(--paper);color:var(--ink)}
+header{border-bottom-color:var(--line)}
+.brand span{color:var(--muted)}
+.back{color:var(--accent)}
+h1,h2,h3{color:var(--ink)}
+.eyebrow{color:var(--accent)}
+.lead,.muted{color:var(--muted)}
+.stat b{color:var(--accent)}
+.flow li.lock{border-color:#6b5a2a}
+.flow li.done{border-color:#4f6b5a}
+th{background:#2b2b2c}
+.tag{background:#2b2b2c;color:var(--ink)}
+.tag.warn{background:var(--lock-soft);color:var(--accent)}
+.note{background:#1e1e1f;border:1px solid var(--line)}
+.shot img,.shots img{border-color:var(--line);box-shadow:0 16px 30px rgba(0,0,0,.35)}
+.cards>div{border-left-color:var(--accent)}
+.kg-list button:hover{background:#2b2b2c}
+.kg-list button[aria-pressed=true]{background:var(--accent);color:#1a1a1a}
+.chip{background:#2b2b2c;color:var(--ink)}
+.chip .t{color:var(--accent)}
+.src{color:var(--muted)}
+aside{background:#1e1e1f;border:1px solid var(--line)}
+aside>p{color:var(--muted)}
+.details p,.duration,figcaption,.shots figcaption{color:var(--muted)}
+.tags span{border-color:var(--line)}
+footer,footer p{color:var(--muted);border-top-color:var(--line)}
+a:focus-visible,video:focus-visible,button:focus-visible{outline-color:var(--accent)}
