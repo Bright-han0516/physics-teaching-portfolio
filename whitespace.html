@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="zh-CN">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>留白 · AI 批改与辅导原型</title><meta name="description" content="留白：先让学生独立做题，再按官方评分标准逐个得分点批改、分级提示的 AI 学习原型，以及 7 个大模型的批改测试。"><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="sub.css"><link rel="stylesheet" href="theme-dark.css"><link rel="icon" href="favicon.svg" type="image/svg+xml"></head>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>留白 · AI 批改与辅导原型</title><meta name="description" content="留白：先让学生独立做题，再按官方评分标准逐个得分点批改、分级提示的 AI 学习原型，以及对 7 个大模型的一次初步批改测试。"><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="sub.css"><link rel="stylesheet" href="theme-dark.css"><link rel="icon" href="favicon.svg" type="image/svg+xml"></head>
 <body>
 <header><a class="brand" href="index.html#about">兰晗 <span>PHYSICS EDUCATION</span></a><nav><a class="back" href="index.html#works">← 返回主页</a></nav></header>
 <main>
@@ -11,7 +11,7 @@
   <div class="stats">
     <div class="stat"><b>16 份</b><span>真实学生作答（已脱敏），共 34 分</span></div>
     <div class="stat"><b>7 个</b><span>参与测试的大模型（DeepSeek、通义千问系列）</span></div>
-    <div class="stat"><b>81%–88%</b><span>总分与人工复核完全一致的比例</span></div>
+    <div class="stat"><b>初步</b><span>对照分数由 AI 辅助复核，未经人工核对</span></div>
   </div>
 </section>
 
@@ -49,8 +49,8 @@
 </section>
 
 <section class="block">
-  <h2>批改测试：7 个大模型</h2>
-  <p>用 16 份真实学生作答（CIE 10 份、Edexcel 6 份，共 34 分）测试，以我按评分标准复核后的分数为准。</p>
+  <h2>批改测试：7 个大模型（初步尝试）</h2>
+  <p>用 16 份真实学生作答（CIE 10 份、Edexcel 6 份，共 34 分）做了一次初步测试。对照用的“标准分数”由 AI 按评分标准辅助复核，<b>我没有逐份人工核对</b>，所以下表只能说明这次尝试的过程，不能当作批改准确率。</p>
   <div class="table-wrap"><table>
     <thead><tr><th>模型</th><th>总分完全一致</th><th>得分点一致</th><th>有前后依赖的题</th></tr></thead>
     <tbody>
@@ -64,20 +64,20 @@
     </tbody>
   </table></div>
 
-  <h3>看到的三件事</h3>
+  <h3>初步观察（尚未经人工核对）</h3>
   <ol class="plain">
     <li><b>模型大小不是关键。</b>7 个模型成绩几乎一样，参数小得多的 qwen3-14b 并不比大模型差。</li>
-    <li><b>错的总是同几道题，而且原因都不在模型。</b>所有模型都错了同样 2 道，6 个模型还多错同 1 道。逐题查下来：
+    <li><b>错的总是同几道题，初步看原因多半不在模型。</b>所有模型都错了同样 2 道，6 个模型还多错同 1 道。逐题查下来：
       <div class="table-wrap"><table>
         <thead><tr><th>题目</th><th>系统 / 复核</th><th>原因</th></tr></thead>
         <tbody>
-          <tr><td>WPH14 Oct 2023 Q22(a)</td><td class="num">0 / 1</td><td><span class="tag">评分尺度</span>学生没写出“竖直方向”。系统按标准严判 0 分；我复核时也觉得是边界情况，沿用了原来的宽松给分。</td></tr>
+          <tr><td>WPH14 Oct 2023 Q22(a)</td><td class="num">0 / 1</td><td><span class="tag">评分尺度</span>学生没写出“竖直方向”。系统按标准严判 0 分；复核时被标为边界情况，沿用了原来的宽松给分。</td></tr>
           <tr><td>WPH16 Oct 2021 Q3(a)</td><td class="num">1 / 2</td><td><span class="tag">评分尺度</span>同样是严判和宽判的差别，复核时也标为边界情况。</td></tr>
           <tr><td>WPH15 May 2022 Q16(a)(ii)</td><td class="num">1–2 / 0</td><td><span class="tag warn">规则没做</span>卷面上同时留着错误结论和正确算式，考官看不出哪个是最终答案，给 0 分。“最终结论不明确”这条规则还没做进系统。</td></tr>
         </tbody>
       </table></div>
       前两题要把“严判还是宽判”明确规定下来，第三题要补一条规则。都是评分标准该定清楚的事，换更大的模型解决不了。</li>
-    <li><b>前后依赖的题，规则比人工批改更稳。</b>有 2 道题规定“前一个得分点没拿到，后一个也不能给分”。最初的人工批改两题都多给了 1 分，复核后改成 0 分；7 个模型全部判对。</li>
+    <li><b>前后依赖的题，规则判得比原始批改更严格。</b>有 2 道题规定“前一个得分点没拿到，后一个也不能给分”。原始批改两题都多给了 1 分，复核后改成 0 分；7 个模型都给了 0 分。</li>
   </ol>
 </section>
 
@@ -85,7 +85,7 @@
   <h2>还不成熟的地方</h2>
   <ul class="plain">
     <li>只测了 16 份作答，能看出方向，但不能代表大规模使用时的准确率。</li>
-    <li>标准分数只有我一个人复核，还没有第二位老师独立批改来对照。</li>
+    <li><b>对照分数由 AI 辅助复核，我没有逐份人工核对</b>，也没有第二位老师独立批改。这是这次测试最大的问题，也是下一步必须补上的。</li>
     <li>系统里已收录的 11 份 CIE 评分标准，只核对过抄得对不对，还没有用学生作答测过批得准不准。</li>
     <li>很多 CIE 真题原卷带电路图，目前用文字描述代替。</li>
     <li>还没有学生实际使用的数据，也还不能多人同时使用。</li>
