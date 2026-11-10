@@ -17,3 +17,13 @@ GitHub Pages：选择 `main` 分支、根目录 `/` 发布。
 本仓库仅包含展示视频及网页，未包含完整教材、题库、实验源代码或个人简历。后续产品请按独立目录添加，并在首页增加介绍与入口。
 
 本仓库未授予第三方通用开源许可。机构标识和第三方内容保留原有权属。
+
+## Bilingual portfolio (November 2026)
+
+- `index.html`: English default, static content readable without JavaScript.
+- `index.zh.html`: matching Chinese edition. The language links preserve the current section when JavaScript is available; no browser-language detection or stored preference overrides the English root page.
+- `portfolio.css`: responsive dark/gold layout with keyboard focus and reduced-motion support.
+- `scripts/build_home.py`: shared bilingual content and static page generator. Run `python3 scripts/build_home.py` after editing it.
+- Original Chinese resource pages and public CV remain available as clearly labelled archival material. Whitespace and course workflow pages carry updated paused-status notices.
+
+Claims distinguish resources produced, sharing reach, classroom impressions and untested learning outcomes. No student records or new internal files are included in this update.
